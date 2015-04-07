@@ -1,22 +1,5 @@
 var Model = Backbone.Model.extend({
-  retrieve : function (id) {
-    var dfd = $.Deferred(), model = this;
-    
-    model.id = id;
-
-    model.fetch()
-      .done(function () {
-        dfd.resolve(model);
-      })
-
-      .fail(function () {
-        dfd.reject.apply(this, arguments);
-      });
-
-    return dfd;
-  },
-
-  configureEventBubbling : function (model, nested, relation) {
+  configureEvents : function (model, nested, relation) {
     var vents = ['add', 'reset', 'change', 'remove'];
 
     if (!nested._hasEvents) {
@@ -31,16 +14,14 @@ var Model = Backbone.Model.extend({
   },
  
   setRelated : function (model, relation, attributes, options) {
-    var key = relation.key, val = attributes[key], current, target, blocked = false;
+    var key = relation.key, val = attributes[key], current, target;
 
     current = model.get(key);
     target  = current || new relation.to();
 
-    blocked = (model.isLocked() && options.source === 'fetcher');
-  
-    if(val && !blocked) {
+    if(val) {
       target.set(val, options);
-      this.configureEventBubbling(model, target, relation);
+      this.configureEvents(model, target, relation);
     }
 
     if(attributes[key]) {
@@ -58,22 +39,6 @@ var Model = Backbone.Model.extend({
     } 
     
     return attributes;
-  },
-
-  lock: function () {
-    if (!this._locked) {
-      this._locked = true;
-    }
-  },
-
-  unlock: function () {
-    if (this._locked) {
-      this._locked = false;
-    }
-  },
-
-  isLocked : function () {
-    return this._locked;
   },
 
   set : function (key, value, options) {
