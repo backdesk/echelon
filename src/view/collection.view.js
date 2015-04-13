@@ -1,0 +1,3 @@
+var CollectionView = ContainerView.extend({
+	
+});

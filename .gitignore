@@ -1,3 +1,9 @@
+.DS_Store
+bower_components
+_SpecRunner.html
+.grunt
+lib
+
 # Logs
 logs
 *.log
