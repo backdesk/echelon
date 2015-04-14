@@ -1,16 +1,31 @@
-var SubViewA = ContainerView.extend({
-	template : _.template('<h2>Sub View A (Container)</h2>')
+var SubViewA = Backbone.View.extend({
+	template : _.template('<h2>Sub View A (Container)</h2>'),
+
+	render : function () {
+		this.$el.html(this.template());
+		return this;
+	}
 });
 
-var SubViewB = ContainerView.extend({
-	template : _.template('<h2>Sub View B (Container)</h2>')
+var SubViewB = Backbone.View.extend({
+	template : _.template('<h2>Sub View B (Container)</h2>'),
+
+	render : function () {
+		this.$el.html(this.template());
+		return this;
+	}	
 });
 
-var SubViewC = BaseView.extend({
-	template : _.template('<h2>Sub View C</h2>')
+var SubViewC = Backbone.View.extend({
+	template : _.template('<h2>Sub View C</h2>'),
+
+	render : function () {
+		this.$el.html(this.template());
+		return this;
+	}
 });
 
-var myView = new ContainerView({
+var myView = new BaseView({
 	template : _.template('<h1>Testing Sub View Stuff</h1>'),
 
 	id : 'test',
@@ -19,11 +34,7 @@ var myView = new ContainerView({
 		new SubViewA(),
 		new SubViewB(),
 		new SubViewC()
-	],
-
-	initialize : function () {
-		console.log(arguments);
-	}
+	]
 });
   
 myView.render();

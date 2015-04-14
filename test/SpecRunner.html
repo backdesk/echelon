@@ -9,17 +9,20 @@
     <script src="../lib/jquery/dist/jquery.js"></script>
     <script src="../lib/underscore/underscore.js"></script>
     <script src="../lib/backbone/backbone.js"></script>
+    <script src="../lib/cocktail/Cocktail.js"></script>
     <script src="../lib/jasmine/lib/jasmine-core/jasmine.js"></script>
     <script src="../lib/jasmine/lib/jasmine-core/jasmine-html.js"></script>
     <script src="../lib/jasmine/lib/jasmine-core/boot.js"></script>
 
     <!-- General helpers etc -->
+    <script>
+        Cocktail.patch(Backbone);
+    </script>
     <script src="../src/iterable.js"></script>
 
     <!-- Views -->
+    <script src="../src/view/container.js"></script>
     <script src="../src/view/base.view.js"></script>
-    <script src="../src/view/container.view.js"></script>
-    <script src="../src/view/collection.view.js"></script>
     
     <!-- Models and Collections -->
     <script src="../src/model/base.model.js"></script>

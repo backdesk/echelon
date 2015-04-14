@@ -15,15 +15,3 @@ var actAsCollection = function(object, listProperty) {
 	  };
 	});
 };
-
-var Iterable = function () {
-	this._items = [];
-	this.length = 0;
-};
-
-Iterable.prototype.add = function (item) {
-	this._items.push(item);
-	this.length = this._items.length;
-};
-
-actAsCollection(Iterable.prototype, '_items');
