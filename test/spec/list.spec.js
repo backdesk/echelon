@@ -3,6 +3,8 @@ describe('List Factory', function () {
 		this.list = Echelon.list({
 			test : true
 		});
+
+		console.log(this.list.cid);
 	});
 
 	it('should return a new instance', function () {
@@ -11,7 +13,7 @@ describe('List Factory', function () {
 		expect(one).not.toEqual(two);
 	});
 
-	xit('call upon "init" when created', function () {
+	xit('call upon "initialize" when created', function () {
 		
 	});
 });

@@ -1,12 +1,12 @@
 Echelon.list = function () {
   'use strict';
 
-  return function () {
-    return _.create(Echelon.root(), {
-      initialize : function () {
-        console.log(arguments);
-      }
-    });
-  };
+  var inst, root = Echelon.root();
+
+  inst = _.create(root, {
+   
+  });
+
+  return inst;
 };
 

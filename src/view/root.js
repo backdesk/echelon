@@ -1,7 +1,9 @@
 Echelon.root = function () {
   'use strict';
 
-  var inst = _.create(Backbone.View.prototype, {
+  var inst, root = Backbone.View.prototype;
+
+  inst = _.create(Backbone.View.prototype, {
     initialize : function (options) {
       _.extend(this, _.pick(options, 'views', 'template'));
 
