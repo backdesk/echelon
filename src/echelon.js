@@ -1,6 +1,6 @@
 /**
  * Echelon
- * A modest, non-production front end learning framework.
+ * A modest, non-production 'learn by example' framework that's heavily inspired by Backbone.
  */
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
