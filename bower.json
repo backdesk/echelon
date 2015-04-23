@@ -1,7 +1,7 @@
 {
-  "name": "backbone-echelon",
-  "version": "0.5.9",
-  "homepage": "https://github.com/backdesk/backbone-echelon",
+  "name": "echelon",
+  "version": "0.0.1",
+  "homepage": "https://github.com/backdesk/echelon",
   "authors": [
     "James Gardner <james@backdesk.io>"
   ],
