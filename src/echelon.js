@@ -1,6 +1,7 @@
 /**
  * Echelon
- * A modest, non-production 'learn by example' framework that's heavily inspired by Backbone.
+ * A modest, non-production 'learn by example' library that's heavily inspired by Backbone
+ * and a number of other teachings surrounding functional programming and SOLID principles.
  */
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
