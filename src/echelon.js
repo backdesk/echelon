@@ -1,3 +1,7 @@
+/**
+ * Echelon
+ * A modest, non-production front end learning framework.
+ */
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['backbone', 'underscore'], function(Backbone, _) {
@@ -15,6 +19,8 @@
   'use strict';
 
   var Ech = {};
+
+  Ech.VERSION = '0.0.1';
 
   /**
    */
