@@ -35,6 +35,8 @@
   };
 
   /**
+   *  Buffer exemplar
+   *  Gathers given elements into a fragment.
    */
   var buffer = Ech.buffer = {
     getBuffer : function () {
@@ -51,6 +53,8 @@
   };
 
   /** 
+   *  Composible view container
+   *  Factory method returns new instances from proto with given properties.
    */
   var root = Ech.root = function (selector, props) {
     return _.create(root.prototype, _.extend(props, {
