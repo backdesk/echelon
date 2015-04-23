@@ -23,8 +23,12 @@
   Ech.VERSION = '0.0.1';
 
   /**
+   *  General utilities
    */
   var utils = Ech.utils = {
+    /**
+     * Shortcut to _ collection methods and apply them them to an object property.
+     */
     wrap : function(object, listProperty) {
       var methods = ['each', 'map', 'find', 'filter', 'reject', 'every', 'some', 
         'contains', 'invoke', 'toArray', 'first', 'initial', 'rest',
