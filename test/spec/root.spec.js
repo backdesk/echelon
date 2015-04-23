@@ -8,7 +8,7 @@ describe('Root Factory', function () {
 			}
 		});
 
-		this.root = Echelon.root({
+		this.root = Ech.root('', {
 			template : _.template('<div id="wrapper"></div>'),
 
 			id : 'test',
@@ -27,22 +27,18 @@ describe('Root Factory', function () {
 				})
 			]
 		});
+
+		this.root.init();
 	});
 
 	it('should return a new instance', function () {
-		var one = Echelon.root(), two = Echelon.root();
+		var one = Ech.root(), two = Ech.root();
 
-		expect(one).not.toEqual(two);
+		expect(one).not.toBe(two);
 	});
 
-	it('should apply default attributes to an instance', function () {
-		var viewOptions = ['el', 'id', 'tagName', 'className'];
-
-		expect(_.keys(_.pick(this.root, viewOptions))).toEqual(viewOptions);
-	});
-
-	it('when creating an instance it should build given child views', function () {
-		expect( $(this.root.getBuffer()).children().length).toBe(3);
+	it('should build given child views upon creation', function () {
+		expect($(this.root.getBuffer()).children().length).toBe(3);
 	});
 
 	it('should accept a template attribute', function () {
@@ -53,9 +49,10 @@ describe('Root Factory', function () {
 		expect(this.root.views.length).toBe(3);
 	});
 
-	it('should accept child views when addView is called', function () {
-		this.root.add(new BasicView());
-
+	it('should accept child views when addChildView is called', function () {
+		this.root.addChildView(new BasicView());
+		
+		expect($(this.root.getBuffer()).children().length).toBe(4);
 		expect(this.root.views.length).toBe(4);
 	});			
 

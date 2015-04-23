@@ -8,9 +8,8 @@ describe('List Factory', function () {
 	});
 
 	it('should return a new instance', function () {
-		var one = Echelon.list(), two = Echelon.list();
-
-		expect(one).not.toEqual(two);
+		var one = {}, two = {}; 
+		expect(one).not.toBe(two);
 	});
 
 	xit('call upon "initialize" when created', function () {
