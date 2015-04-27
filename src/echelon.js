@@ -29,6 +29,7 @@
   var utils = Ech.utils = {
     /**
      * Shortcut to _ collection methods and apply them them to an object property.
+     * An example of 'concatenative inheritance'
      */
     wrap : function(object, listProperty) {
       var methods = ['each', 'map', 'find', 'filter', 'reject', 'every', 'some', 
@@ -42,11 +43,21 @@
           return _[method].apply(_, [list].concat(_.toArray(arguments)));
         };
       });
+    },
+
+    ensureElement : function (selector) {
+      var el = $(selector);
+
+      if (!selector || el.length === 0) {
+        return $('<div></div>');
+      } 
+
+      return $(el);
     }
   };
 
   /**
-   *  Buffer exemplar
+   *  Buffer exemplar object.
    *  Gathers given elements into a fragment.
    */
   var buffer = Ech.buffer = {
@@ -58,19 +69,36 @@
       return this._buffer;
     },
 
-    addToBuffer : function (el) {
+    addToBuffer : function (el) {                 
       this.getBuffer().appendChild(el);
     }
   };
 
   /** 
+   */
+  var renderer = Ech.renderer = function () {
+    var html = this.template();
+
+    this.el.html(this.template());
+
+    if(this._buffer) {
+      this.el.appendChild(this._buffer);
+    }
+
+    return this;
+  };
+
+  /** 
    *  Composible view container
-   *  Factory method returns new instances from proto with given properties.
    */
   var root = Ech.root = function (selector, props) {
-    return _.create(root.prototype, _.extend(props, {
-      selector : selector
+    var inst = _.create(root.prototype, _.extend(props, {
+      selector : selector,
     }));
+
+    inst.setup();
+
+    return inst;
   };
 
   root.prototype = {
@@ -81,17 +109,22 @@
 
       [].push.apply(this.views, args);
 
-      this.build(args);
+      return this.views;
     },  
 
     build : function (views) {
       _.each(views, function (view) {
         this.addToBuffer(view.render().el);
       }, this);
+
+      return this.getBuffer();
     },
 
-    init : function () {
-      this.build(this.views);
+    setup : function () {
+      this.cid = _.uniqueId();
+      this.el = utils.ensureElement(this.selector);
+
+      return this;
     }
   };
 
